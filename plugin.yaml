@@ -1,0 +1,6 @@
+name: "gpg"
+version: "0.1.0"
+usage: "Integreate GnuPG tools with Helm"
+description: |-
+  This plugin provides GnuPG services to Helm.
+command: "$HELM_PLUGIN_DIR/gpg.sh"
