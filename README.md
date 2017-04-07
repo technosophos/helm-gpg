@@ -1,21 +1,23 @@
-# Helm Plugins
+# Helm GPG (GnuPG) Plugin
 
-This repository contains several Helm plugins, along with an installation script.
+Helm has the ability to cryptographically sign and verify charts. This plugin
+provides integration with GnuPG, making it easier to use than the default
+`helm` signing and verifying commands. It is also more secure, since it supports
+passphrase-encrypted keys.
 
-## Plugins
+It offers two operations:
 
-- `keybase`: Provide Keybase integration to Helm
-- `github`: Provide GitHub integration to Helm
-- `env`: Display the environment passed to a plugin.
-- `hello`: An example of a basic Helm plugin
+- sign: Sign a chart with a key
+- verify: Verify a signed chart with your keyring
+
+Also check out the [Helm Keybase](https://github.com/technosophos/helm-keybase) plugin.
 
 ## Installation
 
-1. Set HELM_HOME: `export HELM_HOME=$(helm home)`
-2. Run `make install`.
+You must have GnuPG's command line client (`gpg`) installed and configured.
 
-## Usage
+```console
+$ helm plugin install https://github.com/technosophos/helm-gpg
+```
 
-- Run `helm help` to see the new plugins.
-- Run `helm keybase --help` for keybase help.
-- Run `helm github --help` for github help.
+
