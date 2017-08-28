@@ -73,7 +73,7 @@ sign() {
   chart=$1
   echo "Signing $chart"
   shasum=$(openssl sha -sha256 $chart| awk '{ print $2 }')
-  chartyaml=$(tar -zxf $chart --exclude 'charts/' -O '*/Chart.yaml')
+  chartyaml=$(tar -zxf $chart --exclude 'charts/' --wildcards -O '*/Chart.yaml')
 c=$(cat << EOF
 $chartyaml
 
