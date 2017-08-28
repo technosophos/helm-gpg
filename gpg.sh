@@ -18,13 +18,17 @@ EOF
 
 sign_usage() {
 cat << EOF
+usage: helm gpg sign [{-u|--local-user} keyname] chart_archive
+
 Sign a chart using GnuPG credentials.
 
 This is an alternative to 'helm sign'. It uses your gpg credentials
 to sign a chart.
 
+
 Example:
     $ helm gpg sign foo-0.1.0.tgz
+    $ helm gpg sign --local-user Signing-Key foo-0.1.0.tgz
 
 EOF
 }
@@ -126,7 +130,7 @@ fi
 case "${1:-"help"}" in
   "sign"):
     if [[ $# < 2 ]]; then
-      push_usage
+      sign_usage
       echo "Error: Chart package required."
       exit 1
     fi
