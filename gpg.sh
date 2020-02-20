@@ -72,7 +72,7 @@ sign() {
   fi
   chart=$1
   echo "Signing $chart"
-  shasum=$(openssl sha -sha256 $chart| awk '{ print $2 }')
+  shasum=$(openssl dgst -sha256 $chart| awk '{ print $2 }')
   chartyaml=$(tar -zxf $chart --exclude 'charts/' -O '*/Chart.yaml')
 c=$(cat << EOF
 $chartyaml
@@ -110,7 +110,7 @@ verify() {
 }
 
 shasum() {
-  openssl sha -sha256 "$1" | awk '{ print $2 }'
+  openssl dgst -sha256 "$1" | awk '{ print $2 }'
 }
 
 if [[ $# < 1 ]]; then
